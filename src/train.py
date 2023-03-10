@@ -115,12 +115,17 @@ def main(args):
 
         else:
             transforms_list.append(transforms.CenterCrop(args.crop_size))
+            
         transforms_list.append(transforms.ToTensor())
+        
+        #  These values are the mean and standard deviation of the pixel values in the ImageNet dataset
         transforms_list.append(transforms.Normalize((0.485, 0.456, 0.406),
                                                     (0.229, 0.224, 0.225)))
 
         transform = transforms.Compose(transforms_list)
+        
         max_num_samples = max(args.max_eval, args.batch_size) if split == 'val' else -1
+        
         data_loaders[split], datasets[split] = get_loader(data_dir, args.aux_data_dir, split,
                                                           args.maxseqlen,
                                                           args.maxnuminstrs,

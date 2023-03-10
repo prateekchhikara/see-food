@@ -12,20 +12,22 @@ from build_vocab import Vocabulary
 import random
 import json
 import lmdb
+import os
 
 
 class Recipe1MDataset(data.Dataset):
 
     def __init__(self, data_dir, aux_data_dir, split, maxseqlen, maxnuminstrs, maxnumlabels, maxnumims,
-                 transform=None, max_num_samples=-1, use_lmdb=False, suff=''):
+                 transform=None, max_num_samples=-1, use_lmdb=False, suff=''):        
 
-        self.ingrs_vocab = pickle.load(open(os.path.join(aux_data_dir, suff + 'recipe1m_vocab_ingrs.pkl'), 'rb'))
-        self.instrs_vocab = pickle.load(open(os.path.join(aux_data_dir, suff + 'recipe1m_vocab_toks.pkl'), 'rb'))
-        self.dataset = pickle.load(open(os.path.join(aux_data_dir, suff + 'recipe1m_'+split+'.pkl'), 'rb'))
+        self.ingrs_vocab = pickle.load(open('../data/vocab/recipe1m_vocab_ingrs.pkl', 'rb'))
+        self.instrs_vocab = pickle.load(open('../data/vocab/recipe1m_vocab_toks.pkl', 'rb'))
+        self.dataset = pickle.load(open(os.path.join(aux_data_dir, suff + '/recipe1m_'+split+'.pkl'), 'rb')) # split if train or val
 
         self.label2word = self.get_ingrs_vocab()
 
         self.use_lmdb = use_lmdb
+        
         if use_lmdb:
             self.image_file = lmdb.open(os.path.join(aux_data_dir, 'lmdb_' + split), max_readers=1, readonly=True,
                                         lock=False, readahead=False, meminit=False)

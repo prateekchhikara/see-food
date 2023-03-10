@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "train.py", line 403, in <module>
+    main(args)
+  File "train.py", line 139, in main
+    suff=args.suff)
+  File "/Users/pckraftwrek/Library/Mobile Documents/com~apple~CloudDocs/GitHub/see-food/src/data_loader.py", line 190, in get_loader
+    suff=suff)
+  File "/Users/pckraftwrek/Library/Mobile Documents/com~apple~CloudDocs/GitHub/see-food/src/data_loader.py", line 25, in __init__
+    self.dataset = pickle.load(open(os.path.join(aux_data_dir, suff + '/recipe1m_'+split+'.pkl'), 'rb')) # split if train or val
+FileNotFoundError: [Errno 2] No such file or directory: '/recipe1m_train.pkl'

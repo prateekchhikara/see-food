@@ -5,7 +5,6 @@ import os
 import ntpath
 import time
 import glob
-from scipy.misc import imresize
 import torchvision.utils as vutils
 from operator import itemgetter
 from tensorboardX import SummaryWriter

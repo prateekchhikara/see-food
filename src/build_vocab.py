@@ -149,9 +149,9 @@ def update_counter(list_, counter_toks, istrain=False):
 
 def build_vocab_recipe1m(args):
     print ("Loading data...")
-    dets = json.load(open(os.path.join(args.recipe1m_path, 'det_ingrs.json'), 'r'))
-    layer1 = json.load(open(os.path.join(args.recipe1m_path, 'layer1.json'), 'r'))
-    layer2 = json.load(open(os.path.join(args.recipe1m_path, 'layer2.json'), 'r'))
+    dets = json.load(open(os.path.join('../images/det_ingrs.json'), 'r'))
+    layer1 = json.load(open(os.path.join('../images/layer1.json'), 'r'))
+    layer2 = json.load(open(os.path.join('../images/layer2.json'), 'r'))
 
     id2im = {}
 
@@ -166,6 +166,9 @@ def build_vocab_recipe1m(args):
     idx2ind = {}
     for i, entry in enumerate(dets):
         idx2ind[entry['id']] = i
+        
+    import pdb;
+    pdb.set_trace()
 
     ingrs_file = args.save_path + 'allingrs_count.pkl'
     instrs_file = args.save_path + 'allwords_count.pkl'
@@ -373,7 +376,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--recipe1m_path', type=str,
-                        default='path/to/recipe1m',
+                        default='../garbage',
                         help='recipe1m path')
 
     parser.add_argument('--save_path', type=str, default='../data/',

@@ -8,7 +8,7 @@ def get_parser():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--save_dir', type=str, default='path/to/save/models',
+    parser.add_argument('--save_dir', type=str, default='../results',
                         help='path where checkpoints will be saved')
 
     parser.add_argument('--project_name', type=str, default='inversecooking',
@@ -26,7 +26,7 @@ def get_parser():
     parser.add_argument('--image_model', type=str, default='resnet50', choices=['resnet18', 'resnet50', 'resnet101',
                                                                                  'resnet152', 'inception_v3'])
 
-    parser.add_argument('--recipe1m_dir', type=str, default='path/to/recipe1m',
+    parser.add_argument('--recipe1m_dir', type=str, default='images/',
                         help='directory where recipe1m dataset is extracted')
 
     parser.add_argument('--aux_data_dir', type=str, default='../data',
