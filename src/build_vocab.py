@@ -149,37 +149,35 @@ def update_counter(list_, counter_toks, istrain=False):
 
 def build_vocab_recipe1m(args):
     print ("Loading data...")
-    dets = json.load(open(os.path.join('../images/det_ingrs.json'), 'r'))
-    layer1 = json.load(open(os.path.join('../images/layer1.json'), 'r'))
-    layer2 = json.load(open(os.path.join('../images/layer2.json'), 'r'))
+    dets = json.load(open(os.path.join('../images/det_ingrs_small.json'), 'r'))
+    layer1 = json.load(open(os.path.join('../images/layer1_small.json'), 'r'))
+    layer2 = json.load(open(os.path.join('../images/layer2_small.json'), 'r'))
 
-    id2im = {}
+    id2im = {} # stores food_ID and index --> length = 40 ({'00029f71f7': 0, '0004c091a0': 1, '000507ca6b': 2,...)
 
     for i, entry in enumerate(layer2):
         id2im[entry['id']] = i
 
     print("Loaded data.")
-    print("Found %d recipes in the dataset." % (len(layer1)))
+    print("Found %d recipes in the dataset." % (len(layer1))) # Found 100 recipes in the dataset.
     replace_dict_ingrs = {'and': ['&', "'n"], '': ['%', ',', '.', '#', '[', ']', '!', '?']}
     replace_dict_instrs = {'and': ['&', "'n"], '': ['#', '[', ']']}
 
-    idx2ind = {}
+    idx2ind = {} # stores food_ID and index --> length = 100 ({'00011e0b2c': 0, '00011fc1f9': 1, '000128a538': 2, '00025af750': 3...)
     for i, entry in enumerate(dets):
         idx2ind[entry['id']] = i
         
-    import pdb;
-    pdb.set_trace()
 
-    ingrs_file = args.save_path + 'allingrs_count.pkl'
-    instrs_file = args.save_path + 'allwords_count.pkl'
+    ingrs_file = '../garbage/allingrs_count.pkl'
+    instrs_file = '../garbage/allwords_count.pkl'
 
     #####
     # 1. Count words in dataset and clean
     #####
     if os.path.exists(ingrs_file) and os.path.exists(instrs_file) and not args.forcegen:
         print ("loading pre-extracted word counters")
-        counter_ingrs = pickle.load(open(args.save_path + 'allingrs_count.pkl', 'rb'))
-        counter_toks = pickle.load(open(args.save_path + 'allwords_count.pkl', 'rb'))
+        counter_ingrs = pickle.load(open('../garbage/allingrs_count.pkl', 'rb'))
+        counter_toks = pickle.load(open('../garbage/allwords_count.pkl', 'rb'))
     else:
         counter_toks = Counter()
         counter_ingrs = Counter()
@@ -194,19 +192,25 @@ def build_vocab_recipe1m(args):
             ingrs_list = []
 
             # retrieve pre-detected ingredients for this entry
-            det_ingrs = dets[idx2ind[entry['id']]]['ingredients']
+            det_ingrs = dets[idx2ind[entry['id']]]['ingredients'] # [{'text': 'boneless skinless chicken breasts'}, {'text': 'garlic powder'}, {'text': 'eggs'},
 
-            valid = dets[idx2ind[entry['id']]]['valid']
+            valid = dets[idx2ind[entry['id']]]['valid'] # [True, True, True, True, True,
             det_ingrs_filtered = []
 
+            # INGREDIENTS
             for j, det_ingr in enumerate(det_ingrs):
                 if len(det_ingr) > 0 and valid[j]:
-                    det_ingr_undrs = get_ingredient(det_ingr, replace_dict_ingrs)
-                    det_ingrs_filtered.append(det_ingr_undrs)
+                    det_ingr_undrs = get_ingredient(det_ingr, replace_dict_ingrs) # "extra virginia olive oil" to "extra_virginia_olive_oil"
+                    det_ingrs_filtered.append(det_ingr_undrs) # why twice??
                     ingrs_list.append(det_ingr_undrs)
+                    
+            # import pdb;
+            # pdb.set_trace()
 
             # get raw text for instructions of this entry
             acc_len = 0
+            
+            # INSTRUCTIONS
             for instr in instrs:
                 instr = instr['text']
                 instr = get_instruction(instr, replace_dict_instrs)
@@ -228,9 +232,9 @@ def build_vocab_recipe1m(args):
             if entry['partition'] == 'train':
                 counter_ingrs.update(ingrs_list)
 
-        pickle.dump(counter_ingrs, open(args.save_path + 'allingrs_count.pkl', 'wb'))
-        pickle.dump(counter_toks, open(args.save_path + 'allwords_count.pkl', 'wb'))
-        pickle.dump(counter_ingrs_raw, open(args.save_path + 'allingrs_raw_count.pkl', 'wb'))
+        pickle.dump(counter_ingrs, open('../garbage/allingrs_count.pkl', 'wb'))
+        pickle.dump(counter_toks, open('../garbage/allwords_count.pkl', 'wb'))
+        pickle.dump(counter_ingrs_raw, open('../garbage/allingrs_raw_count.pkl', 'wb')) # this is empty
 
     # manually add missing entries for better clustering
     base_words = ['peppers', 'tomato', 'spinach_leaves', 'turkey_breast', 'lettuce_leaf',
@@ -255,7 +259,7 @@ def build_vocab_recipe1m(args):
         if base_word not in counter_ingrs.keys():
             counter_ingrs[base_word] = 1
 
-    counter_ingrs, cluster_ingrs = cluster_ingredients(counter_ingrs)
+    counter_ingrs, cluster_ingrs = cluster_ingredients(counter_ingrs) # {macaroni :4} and ['elbow_macaroni', 'macaroni', 'cooked_macaroni']
     counter_ingrs, cluster_ingrs = remove_plurals(counter_ingrs, cluster_ingrs)
 
     # If the word frequency is less than 'threshold', then the word is discarded.
@@ -361,14 +365,17 @@ def build_vocab_recipe1m(args):
 def main(args):
 
     vocab_ingrs, vocab_toks, dataset = build_vocab_recipe1m(args)
+    
+    # import pdb;
+    # pdb.set_trace()
 
-    with open(os.path.join(args.save_path, args.suff+'recipe1m_vocab_ingrs.pkl'), 'wb') as f:
+    with open(os.path.join('../garbage/recipe1m_vocab_ingrs.pkl'), 'wb') as f:
         pickle.dump(vocab_ingrs, f)
-    with open(os.path.join(args.save_path, args.suff+'recipe1m_vocab_toks.pkl'), 'wb') as f:
+    with open(os.path.join('../garbage/recipe1m_vocab_toks.pkl'), 'wb') as f:
         pickle.dump(vocab_toks, f)
 
     for split in dataset.keys():
-        with open(os.path.join(args.save_path, args.suff+'recipe1m_' + split + '.pkl'), 'wb') as f:
+        with open(os.path.join('../garbage/recipe1m_' + split + '.pkl'), 'wb') as f:
             pickle.dump(dataset[split], f)
 
 

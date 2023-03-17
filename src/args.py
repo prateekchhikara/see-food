@@ -8,13 +8,13 @@ def get_parser():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--save_dir', type=str, default='../results',
+    parser.add_argument('--save_dir', type=str, default='../checkpoints',
                         help='path where checkpoints will be saved')
 
     parser.add_argument('--project_name', type=str, default='inversecooking',
                         help='name of the directory where models will be saved within save_dir')
 
-    parser.add_argument('--model_name', type=str, default='model',
+    parser.add_argument('--model_name', type=str, default='im2ingr',
                         help='save_dir/project_name/model_name will be the path where logs and checkpoints are stored')
 
     parser.add_argument('--transfer_from', type=str, default='',
@@ -38,10 +38,10 @@ def get_parser():
 
     parser.add_argument('--log_step', type=int , default=10, help='step size for printing log info')
 
-    parser.add_argument('--learning_rate', type=float, default=0.001,
+    parser.add_argument('--learning_rate', type=float, default=0.0001,
                         help='base learning rate')
 
-    parser.add_argument('--scale_learning_rate_cnn', type=float, default=0.01,
+    parser.add_argument('--scale_learning_rate_cnn', type=float, default=1,
                         help='lr multiplier for cnn weights')
 
     parser.add_argument('--lr_decay_rate', type=float, default=0.99,
@@ -67,10 +67,10 @@ def get_parser():
     parser.add_argument('--transf_layers_ingrs', type=int, default=4,
                         help='number of transformer layers in the ingredient decoder')
 
-    parser.add_argument('--num_epochs', type=int, default=400,
+    parser.add_argument('--num_epochs', type=int, default=10,
                         help='maximum number of epochs')
 
-    parser.add_argument('--batch_size', type=int, default=128)
+    parser.add_argument('--batch_size', type=int, default=32)
 
     parser.add_argument('--num_workers', type=int, default=8)
 
@@ -83,10 +83,10 @@ def get_parser():
     parser.add_argument('--dropout_decoder_i', type=float, default=0.3,
                         help='dropout ratio in the ingredient decoder')
 
-    parser.add_argument('--finetune_after', type=int, default=-1,
+    parser.add_argument('--finetune_after', type=int, default=0,
                         help='epoch to start training cnn. -1 is never, 0 is from the beginning')
 
-    parser.add_argument('--loss_weight', nargs='+', type=float, default=[1.0, 0.0, 0.0, 0.0],
+    parser.add_argument('--loss_weight', nargs='+', type=float, default=[0, 1000.0, 1.0, 1.0],
                         help='training loss weights. 1) instruction, 2) ingredient, 3) eos 4) cardinality')
 
     parser.add_argument('--max_eval', type=int, default=4096,
@@ -110,7 +110,7 @@ def get_parser():
     parser.add_argument('--maxnumlabels', type=int, default=20,
                         help='maximum number of ingredients per sample')
 
-    parser.add_argument('--es_metric', type=str, default='loss', choices=['loss', 'iou_sample'],
+    parser.add_argument('--es_metric', type=str, default='iou_sample', choices=['loss', 'iou_sample'],
                         help='early stopping metric to track')
 
     parser.add_argument('--eval_split', type=str, default='val')
@@ -137,7 +137,7 @@ def get_parser():
 
     parser.add_argument('--log_term', dest='log_term', action='store_true',
                         help='if used, shows training log in stdout instead of saving it to a file.')
-    parser.set_defaults(log_term=False)
+    parser.set_defaults(log_term=True)
 
     parser.add_argument('--notensorboard', dest='tensorboard', action='store_false',
                         help='if used, tensorboard logs will not be saved')
@@ -153,7 +153,7 @@ def get_parser():
 
     parser.add_argument('--load_jpeg', dest='use_lmdb', action='store_false',
                         help='if used, images are loaded from jpg files instead of lmdb')
-    parser.set_defaults(use_lmdb=True)
+    parser.set_defaults(use_lmdb=False)  # Prtaeek has changed here
 
     parser.add_argument('--get_perplexity', dest='get_perplexity', action='store_true',
                         help='used to get perplexity in evaluation')

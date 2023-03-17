@@ -203,6 +203,7 @@ def main(args):
     es_best = 10000 if args.es_metric == 'loss' else 0
     # Train the model
     start = args.current_epoch
+    print("training started")
     for epoch in range(start, args.num_epochs):
 
         # save current epoch for resuming
@@ -230,7 +231,7 @@ def main(args):
             keep_cnn_gradients = True
 
         for split in ['train', 'val']:
-
+            
             if split == 'train':
                 model.train()
             else:
@@ -249,17 +250,19 @@ def main(args):
 
             torch.cuda.synchronize()
             start = time.time()
-
+            
             for i in range(total_step):
-
-                img_inputs, captions, ingr_gt, img_ids, paths = loader.next()
-
+                try:
+                  img_inputs, captions, ingr_gt, img_ids, paths = next(loader)
+                except Exception as e:
+                  print("exception", e)
                 ingr_gt = ingr_gt.to(device)
                 img_inputs = img_inputs.to(device)
+                
                 captions = captions.to(device)
                 true_caps_batch = captions.clone()[:, 1:].contiguous()
                 loss_dict = {}
-
+                
                 if split == 'val':
                     with torch.no_grad():
                         losses = model(img_inputs, captions, ingr_gt)

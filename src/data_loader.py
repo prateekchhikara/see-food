@@ -20,9 +20,9 @@ class Recipe1MDataset(data.Dataset):
     def __init__(self, data_dir, aux_data_dir, split, maxseqlen, maxnuminstrs, maxnumlabels, maxnumims,
                  transform=None, max_num_samples=-1, use_lmdb=False, suff=''):        
 
-        self.ingrs_vocab = pickle.load(open('../data/vocab/recipe1m_vocab_ingrs.pkl', 'rb'))
-        self.instrs_vocab = pickle.load(open('../data/vocab/recipe1m_vocab_toks.pkl', 'rb'))
-        self.dataset = pickle.load(open(os.path.join(aux_data_dir, suff + '/recipe1m_'+split+'.pkl'), 'rb')) # split if train or val
+        self.ingrs_vocab = pickle.load(open('../garbage/recipe1m_vocab_ingrs.pkl', 'rb'))
+        self.instrs_vocab = pickle.load(open('../garbage/recipe1m_vocab_toks.pkl', 'rb'))
+        self.dataset = pickle.load(open(os.path.join('../garbage/recipe1m_'+ split +'.pkl'), 'rb')) # split is train or val
 
         self.label2word = self.get_ingrs_vocab()
 
@@ -39,7 +39,7 @@ class Recipe1MDataset(data.Dataset):
                 continue
             self.ids.append(i)
 
-        self.root = os.path.join(data_dir, 'images', split)
+        self.root = os.path.join('../images', split)
         self.transform = transform
         self.max_num_labels = maxnumlabels
         self.maxseqlen = maxseqlen
@@ -125,7 +125,13 @@ class Recipe1MDataset(data.Dataset):
                     image = Image.open(os.path.join(self.root, path[0], path[1],
                                                     path[2], path[3], path)).convert('RGB')
             else:
-                image = Image.open(os.path.join(self.root, path[0], path[1], path[2], path[3], path)).convert('RGB')
+                # print ("Image Loading...", os.path.join(self.root, img_id, path))
+                try:
+                  image = Image.open(os.path.join(self.root, img_id, path)).convert('RGB')
+                except:
+                  image_data = np.zeros((256, 256, 3), dtype=np.uint8)
+                  image = Image.fromarray(image_data)
+                # print ("Image Loaded", image)
             if self.transform is not None:
                 image = self.transform(image)
             image_input = image

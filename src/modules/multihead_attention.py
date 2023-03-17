@@ -91,7 +91,7 @@ class MultiheadAttention(nn.Module):
             q = self.in_proj_q(query)
             k = self.in_proj_k(key)
             v = self.in_proj_v(value)
-        q *= self.scaling
+        q_new = q * self.scaling # Prateek changed here
 
         if saved_state is not None:
             if 'prev_key' in saved_state:
@@ -108,7 +108,7 @@ class MultiheadAttention(nn.Module):
             assert key_padding_mask.size(0) == bsz
             assert key_padding_mask.size(1) == src_len
 
-        q = q.contiguous().view(tgt_len, bsz*self.num_heads, self.head_dim).transpose(0, 1)
+        q = q_new.contiguous().view(tgt_len, bsz*self.num_heads, self.head_dim).transpose(0, 1)
         k = k.contiguous().view(src_len, bsz*self.num_heads, self.head_dim).transpose(0, 1)
         v = v.contiguous().view(src_len, bsz*self.num_heads, self.head_dim).transpose(0, 1)
 
