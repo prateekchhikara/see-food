@@ -2,3 +2,5 @@ images/
 results/
 weights/
 checkpoints/
+*.pyc
+/env
