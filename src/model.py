@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import random
 import numpy as np
-from modules.encoder import EncoderCNN, EncoderLabels
+from modules.encoder import EncoderCNN, EncoderLabels,EncoderVisionTransformer
 from modules.transformer_decoder import DecoderTransformer
 from modules.multihead_attention import MultiheadAttention
 from utils.metrics import softIoU, MaskedCrossEntropyCriterion
@@ -51,8 +51,14 @@ def get_model(args, ingr_vocab_size, instrs_vocab_size):
     # build ingredients embedding
     encoder_ingrs = EncoderLabels(args.embed_size, ingr_vocab_size,
                                   args.dropout_encoder, scale_grad=False).to(device)
+    
+    print(f"using vision: {args.use_vision_transformer}")
+    if args.use_vision_transformer:
+        encoder_image = EncoderVisionTransformer(args.embed_size,args.dropout_encoder)
     # build image model
-    encoder_image = EncoderCNN(args.embed_size, args.dropout_encoder, args.image_model)
+    else:
+        encoder_image = EncoderCNN(args.embed_size, args.dropout_encoder, args.image_model)
+      
 
     decoder = DecoderTransformer(args.embed_size, instrs_vocab_size,
                                  dropout=args.dropout_decoder_r, seq_length=args.maxseqlen,
@@ -119,6 +125,7 @@ class InverseCookingModel(nn.Module):
         targets = targets.contiguous().view(-1)
 
         img_features = self.image_encoder(img_inputs, keep_cnn_gradients)
+     
 
         losses = {}
         target_one_hot = label2onehot(target_ingrs, self.pad_value)
@@ -199,6 +206,7 @@ class InverseCookingModel(nn.Module):
         outputs = dict()
 
         img_features = self.image_encoder(img_inputs)
+    
 
         if not self.recipe_only:
             ingr_ids, ingr_probs = self.ingredient_decoder.sample(None, None, greedy=True, temperature=temperature,

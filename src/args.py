@@ -163,6 +163,8 @@ def get_parser():
                         help='if used, true ingredients will be used as input to obtain the recipe in evaluation')
     parser.set_defaults(use_true_ingrs=False)
 
+    parser.add_argument('--use_vision_transformer', type=bool, default=True)
+
     args = parser.parse_args()
 
     return args
