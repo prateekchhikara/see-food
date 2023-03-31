@@ -164,7 +164,10 @@ def get_parser():
     parser.set_defaults(use_true_ingrs=False)
     
     
-    parser.add_argument('--use_vision_transformer', type=bool, default=True)
+    # parser.add_argument('--use_vision_transformer', type=bool, default=False)
+    
+    parser.add_argument('--use_vision_transformer', dest='use_vision_transformer', action='store_true')
+    parser.set_defaults(use_vision_transformer=False)
 
     args = parser.parse_args()
 
