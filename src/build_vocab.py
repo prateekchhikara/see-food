@@ -149,9 +149,9 @@ def update_counter(list_, counter_toks, istrain=False):
 
 def build_vocab_recipe1m(args):
     print ("Loading data...")
-    dets = json.load(open(os.path.join('../images/det_ingrs_small.json'), 'r'))
-    layer1 = json.load(open(os.path.join('../images/layer1_small.json'), 'r'))
-    layer2 = json.load(open(os.path.join('../images/layer2_small.json'), 'r'))
+    dets = json.load(open(os.path.join('../images_10k/det_ingrs_small_updated.json'), 'r'))
+    layer1 = json.load(open(os.path.join('../images_10k/layer1_small_updated.json'), 'r'))
+    layer2 = json.load(open(os.path.join('../images_10k/layer2_small_updated.json'), 'r'))
 
     id2im = {} # stores food_ID and index --> length = 40 ({'00029f71f7': 0, '0004c091a0': 1, '000507ca6b': 2,...)
 
@@ -366,8 +366,8 @@ def main(args):
 
     vocab_ingrs, vocab_toks, dataset = build_vocab_recipe1m(args)
     
-    # import pdb;
-    # pdb.set_trace()
+    import pdb;
+    pdb.set_trace()
 
     with open(os.path.join('../garbage/recipe1m_vocab_ingrs.pkl'), 'wb') as f:
         pickle.dump(vocab_ingrs, f)

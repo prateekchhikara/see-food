@@ -157,9 +157,18 @@ def main(args):
                  + list(model.ingredient_encoder.parameters())
 
     # only train the linear layer in the encoder if we are not transfering from another model
-    if args.transfer_from == '':
+    
+    if args.use_vision_transformer:
         params += list(model.image_encoder.linear.parameters())
-    params_cnn = list(model.image_encoder.resnet.parameters())
+        params += list(model.image_encoder.sequential.parameters())
+        
+        params_cnn = list(model.image_encoder.vit.parameters())
+        
+    else:
+        if args.transfer_from == '':
+            params += list(model.image_encoder.linear.parameters())
+            
+        params_cnn = list(model.image_encoder.resnet.parameters())
 
     print ("CNN params:", sum(p.numel() for p in params_cnn if p.requires_grad))
     print ("decoder params:", sum(p.numel() for p in params if p.requires_grad))
@@ -169,7 +178,7 @@ def main(args):
                                                            'lr': args.learning_rate*args.scale_learning_rate_cnn}],
                                      lr=args.learning_rate, weight_decay=args.weight_decay)
         keep_cnn_gradients = True
-        print ("Fine tuning resnet")
+        # print ("Fine tuning resnet")
     else:
         optimizer = torch.optim.Adam(params, lr=args.learning_rate)
 

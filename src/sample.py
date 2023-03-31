@@ -92,6 +92,7 @@ def main(args):
 
     # Build the model
     model = get_model(args, ingr_vocab_size, instrs_vocab_size)
+    import pdb; pdb.set_trace()
     model_path = os.path.join(args.save_dir, args.project_name, args.model_name, 'checkpoints', 'modelbest.ckpt')
 
     # overwrite flags for inference
@@ -170,7 +171,7 @@ def main(args):
                                 results_dict['recipes'][imgid[j]].append(sampled_ids)
     if args.get_perplexity:
         print (len(perplexity_list))
-        print (np.mean(perplexity_list))
+        # print (np.mean(perplexity_list))
     else:
 
         if not args.recipe_only:

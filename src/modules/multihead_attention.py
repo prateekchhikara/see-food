@@ -120,11 +120,11 @@ class MultiheadAttention(nn.Module):
             assert query.size() == key.size(), \
                 'mask_future_timesteps only applies to self-attention'
             attn_weights += self.buffered_mask(attn_weights).unsqueeze(0)
-        if key_padding_mask is not None:
+        if key_padding_mask is not None: # Prateek changed here added .bool() to remove the warning
             # don't attend to padding symbols
             attn_weights = attn_weights.view(bsz, self.num_heads, tgt_len, src_len)
             attn_weights = attn_weights.float().masked_fill(
-                key_padding_mask.unsqueeze(1).unsqueeze(2),
+                key_padding_mask.unsqueeze(1).unsqueeze(2).bool(),
                 float('-inf'),
             ).type_as(attn_weights)  # FP16 support: cast to float and back
             attn_weights = attn_weights.view(bsz * self.num_heads, tgt_len, src_len)

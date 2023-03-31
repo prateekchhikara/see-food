@@ -39,7 +39,7 @@ class Recipe1MDataset(data.Dataset):
                 continue
             self.ids.append(i)
 
-        self.root = os.path.join('../images', split)
+        self.root = os.path.join('../images_10k', split)
         self.transform = transform
         self.max_num_labels = maxnumlabels
         self.maxseqlen = maxseqlen
@@ -107,6 +107,9 @@ class Recipe1MDataset(data.Dataset):
         if len(paths) == 0:
             path = None
             image_input = torch.zeros((3, 224, 224))
+            print("FOLDER EMPTY")
+            import time
+            time.sleep(10)
         else:
             if self.split == 'train':
                 img_idx = np.random.randint(0, len(paths))
@@ -126,11 +129,11 @@ class Recipe1MDataset(data.Dataset):
                                                     path[2], path[3], path)).convert('RGB')
             else:
                 # print ("Image Loading...", os.path.join(self.root, img_id, path))
-                try:
-                  image = Image.open(os.path.join(self.root, img_id, path)).convert('RGB')
-                except:
-                  image_data = np.zeros((256, 256, 3), dtype=np.uint8)
-                  image = Image.fromarray(image_data)
+                image = Image.open(os.path.join(self.root, img_id, path)).convert('RGB')
+                # except:
+                  
+                #   image_data = np.zeros((256, 256, 3), dtype=np.uint8)
+                #   image = Image.fromarray(image_data)
                 # print ("Image Loaded", image)
             if self.transform is not None:
                 image = self.transform(image)

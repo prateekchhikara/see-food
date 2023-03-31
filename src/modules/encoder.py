@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import random
 import numpy as np
-
+from transformers import ViTForImageClassification, ViTModel
 
 class EncoderCNN(nn.Module):
     def __init__(self, embed_size, dropout=0.5, image_model='resnet101', pretrained=True):
@@ -55,3 +55,29 @@ class EncoderLabels(nn.Module):
         embeddings = embeddings.permute(0, 2, 1).contiguous()
 
         return embeddings
+
+
+class EncoderVisionTransformer(nn.Module):
+    def __init__(self,embed_size, dropout=0.5):
+        super().__init__()
+
+        self.vit= ViTModel.from_pretrained('google/vit-base-patch16-224')
+        self.linear = nn.Linear(768,7*7)
+        self.sequential = nn.Sequential(
+            nn.Conv2d(197, 512, kernel_size=(1, 1), stride=(1, 1)), 
+            nn.Dropout2d(p=0.3, inplace=False)
+        )   
+
+
+
+    def forward(self, x, keep_cnn_gradients=False):
+        vit_output = self.vit(x)
+        x = self.linear(vit_output.last_hidden_state)
+        x = x.view(-1,197,7,7)
+        x = self.sequential(x)
+
+        features = x.view(x.size(0), x.size(1), -1)
+
+
+
+        return features

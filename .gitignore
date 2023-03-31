@@ -2,3 +2,9 @@ images/
 results/
 weights/
 checkpoints/
+paper_weights/
+TEST_DATASET/
+images_1k/
+data/
+images_10k/
+*.pyc
