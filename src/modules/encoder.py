@@ -13,8 +13,11 @@ class EncoderCNN(nn.Module):
         """Load the pretrained ResNet-152 and replace top fc layer."""
         super(EncoderCNN, self).__init__()
         resnet = globals()[image_model](pretrained=pretrained)
+        print(resnet)
         modules = list(resnet.children())[:-2]  # delete the last fc layer.
         self.resnet = nn.Sequential(*modules)
+
+        # print(resnet.fc.in_features)
 
         self.linear = nn.Sequential(nn.Conv2d(resnet.fc.in_features, embed_size, kernel_size=1, padding=0),
                                     nn.Dropout2d(dropout))
@@ -34,6 +37,37 @@ class EncoderCNN(nn.Module):
         return features
 
 
+class InceptionEncoder(nn.Module):
+    def __init__(self,embed_size, dropout=0.5,pretrained = False):
+        """Load the pretrained InceptionV3."""
+        super().__init__()
+        inception = inception_v3(pretrained = pretrained)
+  
+        self.resnet = inception_v3(pretrained=pretrained)
+        self.resnet.fc = nn.Linear(2048,7*7)
+
+
+        self.linear = nn.Sequential(
+             nn.Conv2d(1,2048,kernel_size=(1, 1), stride=(1, 1)),
+            nn.Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1)), 
+            nn.Dropout2d(p=0.3, inplace=False)
+        )        
+
+    def forward(self, images, keep_cnn_gradients=False):
+        """Extract feature vectors from input images."""
+
+        if keep_cnn_gradients:
+            raw_conv_feats = self.resnet(images)
+        else:
+            with torch.no_grad():
+                raw_conv_feats = self.resnet(images)
+        raw_conv_feats = raw_conv_feats.view(-1,1,7,7)
+        features = self.linear(raw_conv_feats)
+      
+        features = features.view(features.size(0), features.size(1), -1)
+
+        return features
+
 class EncoderVisionTransformer(nn.Module):
     def __init__(self,embed_size, dropout=0.5):
         super().__init__()
@@ -44,9 +78,7 @@ class EncoderVisionTransformer(nn.Module):
             nn.Conv2d(197, 512, kernel_size=(1, 1), stride=(1, 1)), 
             nn.Dropout2d(p=0.3, inplace=False)
         )   
-
-
-    
+        
     def forward(self, x):
         vit_output = self.vit(x)
         x = self.linear(vit_output.last_hidden_state)
