@@ -238,6 +238,7 @@ def main(args):
                                            'lr': decay_factor*args.learning_rate*args.scale_learning_rate_cnn}],
                                          lr=decay_factor*args.learning_rate)
             keep_cnn_gradients = True
+            
 
         for split in ['train', 'val']:
             
@@ -408,6 +409,16 @@ def main(args):
 
 if __name__ == '__main__':
     args = get_parser()
+    
+    """
+        REMOVE THIS
+    """
+    os.chdir("/data/prateek/github/see-food/src/") # remove this
+    
+    
+    
+    
+    
     torch.manual_seed(1234)
     torch.cuda.manual_seed(1234)
     random.seed(1234)

@@ -23,7 +23,7 @@ def get_parser():
     parser.add_argument('--suff', type=str, default='',
                         help='the id of the dictionary to load for training')
 
-    parser.add_argument('--image_model', type=str, default='resnet50', choices=['resnet18', 'resnet50', 'resnet101',
+    parser.add_argument('--image_model', type=str, default='resnet18', choices=['resnet18', 'resnet50', 'resnet101',
                                                                                  'resnet152', 'inception_v3'])
 
     parser.add_argument('--recipe1m_dir', type=str, default='images_10k/',

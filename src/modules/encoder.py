@@ -71,7 +71,11 @@ class EncoderVisionTransformer(nn.Module):
 
 
     def forward(self, x, keep_cnn_gradients=False):
-        vit_output = self.vit(x)
+        if keep_cnn_gradients:
+            vit_output = self.vit(x)
+        else:
+            with torch.no_grad():
+                vit_output = self.vit(x)
         x = self.linear(vit_output.last_hidden_state)
         x = x.view(-1,197,7,7)
         x = self.sequential(x)

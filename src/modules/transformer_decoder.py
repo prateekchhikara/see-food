@@ -268,7 +268,7 @@ class DecoderTransformer(nn.Module):
         self.linear = Linear(embed_size, vocab_size-1)
 
     def forward(self, ingr_features, ingr_mask, captions, img_features, incremental_state=None):
-
+        
         if ingr_features is not None:
             ingr_features = ingr_features.permute(0, 2, 1)
             ingr_features = ingr_features.transpose(0, 1)

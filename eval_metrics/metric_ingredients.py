@@ -46,7 +46,7 @@ def compute_metrics(ret_metrics, error_types, metric_names, eps=1e-10, weights=N
     if 'jaccard' in metric_names:
         ret_metrics['jaccard'].append(error_types['tp_all'] / (error_types['tp_all'] + error_types['fp_all'] + error_types['fn_all'] + eps))
     if 'dice' in metric_names:
-        ret_metrics['dice'].append(2*error_types['tp_all'] / (2*(error_types['tp_all'] + error_types['fp_all'] + error_types['fn_all']) + eps))
+        ret_metrics['dice'].append(2*error_types['tp_all'] / (2*(error_types['tp_all']) + error_types['fp_all'] + error_types['fn_all'] + eps) )
     if 'f1' in metric_names:
         pre = error_types['tp_i'] / (error_types['tp_i'] + error_types['fp_i'] + eps)
         rec = error_types['tp_i'] / (error_types['tp_i'] + error_types['fn_i'] + eps)
@@ -120,7 +120,7 @@ def main():
     # print(ret_metrics)
 
     GT  = sorted(glob.glob('../TEST_DATASET/GT/ingredients/*'))
-    PRED  = sorted(glob.glob('../TEST_DATASET/PRED-baseline/ingredients/*'))
+    PRED  = sorted(glob.glob('../TEST_DATASET/PRED-resnet18/ingredients/*'))
     ret_metrics = {'accuracy': [], 'f1': [], 'jaccard': [], 'f1_ingredients': [], 'dice' : []}
 
     for actual_file, pred_file in zip(GT, PRED):

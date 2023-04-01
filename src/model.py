@@ -54,7 +54,7 @@ def get_model(args, ingr_vocab_size, instrs_vocab_size):
     # build image model
     if args.use_vision_transformer:
         print(f"using vision: {args.use_vision_transformer}")
-        encoder_image = EncoderVisionTransformer(args.embed_size,args.dropout_encoder)
+        encoder_image = EncoderVisionTransformer(args.embed_size, args.dropout_encoder)
     else:
         encoder_image = EncoderCNN(args.embed_size, args.dropout_encoder, args.image_model)
 
