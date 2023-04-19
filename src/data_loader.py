@@ -39,7 +39,7 @@ class Recipe1MDataset(data.Dataset):
                 continue
             self.ids.append(i)
 
-        self.root = os.path.join('../images_10k', split)
+        self.root = os.path.join('../images_100k', split)
         self.transform = transform
         self.max_num_labels = maxnumlabels
         self.maxseqlen = maxseqlen

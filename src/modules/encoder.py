@@ -58,7 +58,7 @@ class EncoderLabels(nn.Module):
 
 
 class EncoderVisionTransformer(nn.Module):
-    def __init__(self,embed_size, dropout=0.5):
+    def __init__(self, embed_size, dropout=0.5):
         super().__init__()
 
         self.vit= ViTModel.from_pretrained('google/vit-base-patch16-224')

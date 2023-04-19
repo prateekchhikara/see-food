@@ -1,10 +1,13 @@
 images/
 results/
 weights/
-checkpoints/
+checkpoints*/
 paper_weights/
 TEST_DATASET/
 images_1k/
 data/
 images_10k/
+images_100k/
 *.pyc
+garbage*/
+*pt

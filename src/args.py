@@ -23,10 +23,10 @@ def get_parser():
     parser.add_argument('--suff', type=str, default='',
                         help='the id of the dictionary to load for training')
 
-    parser.add_argument('--image_model', type=str, default='resnet18', choices=['resnet18', 'resnet50', 'resnet101',
+    parser.add_argument('--image_model', type=str, default='resnet50', choices=['resnet18', 'resnet50', 'resnet101',
                                                                                  'resnet152', 'inception_v3'])
 
-    parser.add_argument('--recipe1m_dir', type=str, default='images_10k/',
+    parser.add_argument('--recipe1m_dir', type=str, default='images_100k/',
                         help='directory where recipe1m dataset is extracted')
 
     parser.add_argument('--aux_data_dir', type=str, default='../data',
@@ -36,7 +36,7 @@ def get_parser():
 
     parser.add_argument('--image_size', type=int, default=256, help='size to rescale images')
 
-    parser.add_argument('--log_step', type=int , default=10, help='step size for printing log info')
+    parser.add_argument('--log_step', type=int , default=100, help='step size for printing log info')
 
     parser.add_argument('--learning_rate', type=float, default=0.0001,
                         help='base learning rate')
@@ -67,10 +67,10 @@ def get_parser():
     parser.add_argument('--transf_layers_ingrs', type=int, default=4,
                         help='number of transformer layers in the ingredient decoder')
 
-    parser.add_argument('--num_epochs', type=int, default=100,
+    parser.add_argument('--num_epochs', type=int, default=1,
                         help='maximum number of epochs')
 
-    parser.add_argument('--batch_size', type=int, default=64)
+    parser.add_argument('--batch_size', type=int, default=8)
 
     parser.add_argument('--num_workers', type=int, default=8)
 
@@ -153,7 +153,7 @@ def get_parser():
 
     parser.add_argument('--load_jpeg', dest='use_lmdb', action='store_false',
                         help='if used, images are loaded from jpg files instead of lmdb')
-    parser.set_defaults(use_lmdb=False)  # Prtaeek has changed here
+    parser.set_defaults(use_lmdb=False)  # Prateek has changed here
 
     parser.add_argument('--get_perplexity', dest='get_perplexity', action='store_true',
                         help='used to get perplexity in evaluation')

@@ -120,7 +120,7 @@ def main():
     # print(ret_metrics)
 
     GT  = sorted(glob.glob('../TEST_DATASET/GT/ingredients/*'))
-    PRED  = sorted(glob.glob('../TEST_DATASET/PRED-resnet18/ingredients/*'))
+    PRED  = sorted(glob.glob('../TEST_DATASET/PRED-vit100k/ingredients/*'))
     ret_metrics = {'accuracy': [], 'f1': [], 'jaccard': [], 'f1_ingredients': [], 'dice' : []}
 
     for actual_file, pred_file in zip(GT, PRED):

@@ -143,6 +143,7 @@ def main(args):
 
     # Build the model
     model = get_model(args, ingr_vocab_size, instrs_vocab_size)
+    
     keep_cnn_gradients = False
 
     decay_factor = 1.0
@@ -410,9 +411,9 @@ def main(args):
 if __name__ == '__main__':
     args = get_parser()
     
-    """
-        REMOVE THIS
-    """
+    # """
+    #     REMOVE THIS
+    # """
     os.chdir("/data/prateek/github/see-food/src/") # remove this
     
     

@@ -59,6 +59,7 @@ def colorized_list(ingrs, ingrs_gt, colorize=False):
 def prepare_output(ids, gen_ingrs, ingr_vocab_list, vocab):
 
     toks = get_recipe(ids, vocab)
+    # print(toks)
     is_valid = True
     reason = 'All ok.'
     try:
@@ -68,6 +69,7 @@ def prepare_output(ids, gen_ingrs, ingr_vocab_list, vocab):
         toks_trunc = toks
         is_valid = False
         reason = 'no eos found'
+        
 
     # repetition score
     score = float(len(set(toks_trunc))) / float(len(toks_trunc))
@@ -98,6 +100,6 @@ def prepare_output(ids, gen_ingrs, ingr_vocab_list, vocab):
         is_valid = False
 
     valid = {'is_valid': is_valid, 'reason': reason, 'score': score}
-    outs = {'title': title, 'recipe': toks, 'ingrs': gen_ingrs}
+    outs = {'title': title, 'recipe': toks, 'ingrs': gen_ingrs,'reason':reason}
 
     return outs, valid
