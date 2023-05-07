@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import random
 import numpy as np
-from modules.encoder import EncoderCNN, EncoderLabels, EncoderVisionTransformer
+from modules.encoder import EncoderCNN, EncoderLabels, EncoderVisionTransformer, InceptionEncoder
 from modules.transformer_decoder import DecoderTransformer
 from modules.multihead_attention import MultiheadAttention
 from utils.metrics import softIoU, MaskedCrossEntropyCriterion
@@ -56,7 +56,10 @@ def get_model(args, ingr_vocab_size, instrs_vocab_size):
         print(f"using vision: {args.use_vision_transformer}")
         encoder_image = EncoderVisionTransformer(args.embed_size, args.dropout_encoder)
     else:
-        encoder_image = EncoderCNN(args.embed_size, args.dropout_encoder, args.image_model)
+        if "resnet" in args.image_model:
+            encoder_image = EncoderCNN(args.embed_size, args.dropout_encoder, args.image_model)
+        else:
+            encoder_image = InceptionEncoder(args.embed_size, args.dropout_encoder)
 
     decoder = DecoderTransformer(args.embed_size, instrs_vocab_size,
                                  dropout=args.dropout_decoder_r, seq_length=args.maxseqlen,

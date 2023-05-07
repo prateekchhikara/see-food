@@ -18,6 +18,7 @@ def get_recipe(ids, vocab):
 
 def get_ingrs(ids, ingr_vocab_list):
     gen_ingrs = []
+    print(ids)
     for ingr_idx in ids:
         ingr_name = ingr_vocab_list[ingr_idx]
         if ingr_name == '<pad>':
@@ -69,7 +70,7 @@ def prepare_output(ids, gen_ingrs, ingr_vocab_list, vocab):
         toks_trunc = toks
         is_valid = False
         reason = 'no eos found'
-        
+                
 
     # repetition score
     score = float(len(set(toks_trunc))) / float(len(toks_trunc))

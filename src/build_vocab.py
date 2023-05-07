@@ -229,7 +229,8 @@ def build_vocab_recipe1m(args):
             title = nltk.tokenize.word_tokenize(entry['title'].lower())
             if entry['partition'] == 'train':
                 counter_toks.update(title)
-            if entry['partition'] == 'train':
+                
+                counter_ingrs.update(title)
                 counter_ingrs.update(ingrs_list)
 
         pickle.dump(counter_ingrs, open('../garbage/allingrs_count.pkl', 'wb+'))
@@ -281,13 +282,15 @@ def build_vocab_recipe1m(args):
     # Ingredient vocab
     # Create a vocab wrapper for ingredients
     vocab_ingrs = Vocabulary()
-    idx = vocab_ingrs.add_word('<end>')
+    vocab_ingrs.add_word('<end>')
+    idx = vocab_ingrs.add_word('<eoi>')
     # this returns the next idx to add words to
     # Add the ingredients to the vocabulary.
     for k, _ in ingrs.items():
         for ingr in cluster_ingrs[k]:
             idx = vocab_ingrs.add_word(ingr, idx)
         idx += 1
+    
     _ = vocab_ingrs.add_word('<pad>', idx)
 
     print("Total ingr vocabulary size: {}".format(len(vocab_ingrs)))

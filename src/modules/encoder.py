@@ -31,7 +31,40 @@ class EncoderCNN(nn.Module):
 
         return features
 
+class InceptionEncoder(nn.Module):
+    def __init__(self,embed_size, dropout=0.5,pretrained = False):
+        """Load the pretrained InceptionV3."""
+        super().__init__()
+        # inception = inception_v3(pretrained = pretrained)
 
+        self.resnet = inception_v3(pretrained=pretrained)
+        self.resnet.fc = nn.Linear(2048,7*7)
+
+
+        self.linear = nn.Sequential(
+            nn.Conv2d(1,2048,kernel_size=(1, 1), stride=(1, 1)),
+            nn.Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1)), 
+            nn.Dropout2d(p=0.3, inplace=False)
+        )        
+
+    def forward(self, images, keep_cnn_gradients=False):
+        """Extract feature vectors from input images."""
+
+        if keep_cnn_gradients:
+            raw_conv_feats = self.resnet(images)
+            # print(raw_conv_feats)
+            raw_conv_feats = raw_conv_feats.logits
+        else:
+            with torch.no_grad():
+                raw_conv_feats = self.resnet(images)
+                # raw_conv_feats = raw_conv_feats.logits
+        raw_conv_feats = raw_conv_feats.view(-1,1,7,7)
+        features = self.linear(raw_conv_feats)
+    
+        features = features.view(features.size(0), features.size(1), -1)
+
+        return features
+    
 class EncoderLabels(nn.Module):
     def __init__(self, embed_size, num_classes, dropout=0.5, embed_weights=None, scale_grad=False):
 

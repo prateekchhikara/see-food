@@ -23,7 +23,7 @@ def get_parser():
     parser.add_argument('--suff', type=str, default='',
                         help='the id of the dictionary to load for training')
 
-    parser.add_argument('--image_model', type=str, default='resnet50', choices=['resnet18', 'resnet50', 'resnet101',
+    parser.add_argument('--image_model', type=str, default='resnet18', choices=['resnet18', 'resnet50', 'resnet101',
                                                                                  'resnet152', 'inception_v3'])
 
     parser.add_argument('--recipe1m_dir', type=str, default='images_100k/',
@@ -32,9 +32,9 @@ def get_parser():
     parser.add_argument('--aux_data_dir', type=str, default='../data',
                         help='path to other necessary data files (eg. vocabularies)')
 
-    parser.add_argument('--crop_size', type=int, default=224, help='size for randomly or center cropping images')
+    parser.add_argument('--crop_size', type=int, default=224, help='size for randomly or center cropping images') 
 
-    parser.add_argument('--image_size', type=int, default=256, help='size to rescale images')
+    parser.add_argument('--image_size', type=int, default=256, help='size to rescale images') 
 
     parser.add_argument('--log_step', type=int , default=100, help='step size for printing log info')
 
@@ -67,12 +67,12 @@ def get_parser():
     parser.add_argument('--transf_layers_ingrs', type=int, default=4,
                         help='number of transformer layers in the ingredient decoder')
 
-    parser.add_argument('--num_epochs', type=int, default=1,
+    parser.add_argument('--num_epochs', type=int, default=10,
                         help='maximum number of epochs')
 
-    parser.add_argument('--batch_size', type=int, default=8)
+    parser.add_argument('--batch_size', type=int, default=64)
 
-    parser.add_argument('--num_workers', type=int, default=8)
+    parser.add_argument('--num_workers', type=int, default=10)
 
     parser.add_argument('--dropout_encoder', type=float, default=0.3,
                         help='dropout ratio for the image and ingredient encoders')
@@ -107,8 +107,8 @@ def get_parser():
     parser.add_argument('--maxnumims', type=int, default=5,
                         help='maximum number of images per sample')
 
-    parser.add_argument('--maxnumlabels', type=int, default=20,
-                        help='maximum number of ingredients per sample')
+    parser.add_argument('--maxnumlabels', type=int, default=30,
+                        help='maximum number of ingredients per sample') # earlier it was 20
 
     parser.add_argument('--es_metric', type=str, default='iou_sample', choices=['loss', 'iou_sample'],
                         help='early stopping metric to track')

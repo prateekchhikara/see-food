@@ -7,12 +7,14 @@ import torch.autograd as autograd
 import numpy as np
 import os
 import random
+from utils.output_utils import prepare_output
 import pickle
 from data_loader import get_loader
 from build_vocab import Vocabulary
 from model import get_model
 from torchvision import transforms
 import sys
+
 import json
 import time
 import torch.backends.cudnn as cudnn
@@ -20,6 +22,9 @@ from utils.tb_visualizer import Visualizer
 from model import mask_from_eos, label2onehot
 from utils.metrics import softIoU, compute_metrics, update_error_types
 import random
+
+# os.environ['CUDA_VISIBLE_DEVICES'] = '3'
+
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 map_loc = None if torch.cuda.is_available() else 'cpu'
 
@@ -279,9 +284,25 @@ def main(args):
                         losses = model(img_inputs, captions, ingr_gt)
 
                         if not args.recipe_only:
+                            
+                            
                             outputs = model(img_inputs, captions, ingr_gt, sample=True)
+                            
+                            ###
+                            
+                            ingrs_vocab = pickle.load(open('/data/prateek/github/see-food/garbage/ingr_vocab.pkl', 'rb'))
+                            
+                            ingr_ids = outputs['ingr_ids'].cpu().numpy()
+                            recipe_ids = outputs['ingr_ids'].cpu().numpy() #outputs['recipe_ids'].cpu().numpy()
+                                
+                            outs, valid = prepare_output(recipe_ids[0], ingr_ids[0], ingrs_vocab, ingrs_vocab)
+                            print("OMKAR--->", outs['ingrs'])
+                            
+                            
+                            ####
 
                             ingr_ids_greedy = outputs['ingr_ids']
+                            print(ingr_ids_greedy[0])
 
                             mask = mask_from_eos(ingr_ids_greedy, eos_value=0, mult_before=False)
                             ingr_ids_greedy[mask == 0] = ingr_vocab_size-1
@@ -296,9 +317,19 @@ def main(args):
                             del outputs, pred_one_hot, target_one_hot, iou_sample
 
                 else:
+                    # print("dhiraj")
                     losses = model(img_inputs, captions, ingr_gt,
                                    keep_cnn_gradients=keep_cnn_gradients)
+                    
+                    # outputs = model(img_inputs, captions, ingr_gt, sample=True)
+                    # ingr_ids_greedy = outputs['ingr_ids']
+                    # print(ingr_ids_greedy)
 
+                    # mask = mask_from_eos(ingr_ids_greedy, eos_value=0, mult_before=False)
+                    # ingr_ids_greedy[mask == 0] = ingr_vocab_size-1
+                    # pred_one_hot = label2onehot(ingr_ids_greedy, ingr_vocab_size-1)
+                    # target_one_hot = label2onehot(ingr_gt, ingr_vocab_size-1)
+                    
                 if not args.ingrs_only:
                     recipe_loss = losses['recipe_loss']
 

@@ -73,11 +73,18 @@ class Recipe1MDataset(data.Dataset):
 
         idx = index
 
-        labels = self.dataset[self.ids[idx]]['ingredients']
-        title = sample['title']
+        labels = self.dataset[self.ids[idx]]['ingredients'] # ingredients
+        title = sample['title'] # title
+
+
+        labels = ["<eoi>"] + title + ["<eoi>"] + labels 
+        
+
 
         tokens = []
         tokens.extend(title)
+        
+        
         # add fake token to separate title from recipe
         tokens.append('<eoi>')
         for c in captions:
@@ -93,7 +100,10 @@ class Recipe1MDataset(data.Dataset):
 
         for i in range(self.max_num_labels):
             if i >= len(labels):
-                label = '<pad>'
+                if i == len(labels):
+                    label = '<end>'
+                else:
+                    label = '<pad>'
             else:
                 label = labels[i]
             label_idx = self.ingrs_vocab(label)
@@ -101,7 +111,7 @@ class Recipe1MDataset(data.Dataset):
                 ilabels_gt[pos] = label_idx
                 pos += 1
 
-        ilabels_gt[pos] = self.ingrs_vocab('<end>')
+        # ilabels_gt[pos] = self.ingrs_vocab('<end>')
         ingrs_gt = torch.from_numpy(ilabels_gt).long()
 
         if len(paths) == 0:
@@ -116,25 +126,8 @@ class Recipe1MDataset(data.Dataset):
             else:
                 img_idx = 0
             path = paths[img_idx]
-            if self.use_lmdb:
-                try:
-                    with self.image_file.begin(write=False) as txn:
-                        image = txn.get(path.encode())
-                        image = np.fromstring(image, dtype=np.uint8)
-                        image = np.reshape(image, (256, 256, 3))
-                    image = Image.fromarray(image.astype('uint8'), 'RGB')
-                except:
-                    print ("Image id not found in lmdb. Loading jpeg file...")
-                    image = Image.open(os.path.join(self.root, path[0], path[1],
-                                                    path[2], path[3], path)).convert('RGB')
-            else:
-                # print ("Image Loading...", os.path.join(self.root, img_id, path))
-                image = Image.open(os.path.join(self.root, img_id, path)).convert('RGB')
-                # except:
-                  
-                #   image_data = np.zeros((256, 256, 3), dtype=np.uint8)
-                #   image = Image.fromarray(image_data)
-                # print ("Image Loaded", image)
+            image = Image.open(os.path.join(self.root, img_id, path)).convert('RGB')
+    
             if self.transform is not None:
                 image = self.transform(image)
             image_input = image
