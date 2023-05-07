@@ -1,0 +1,786 @@
+Title:
+Crunchy Onion Potato Bake
+Original:
+Preheat oven to 350 degrees Fahrenheit.
+Spray pan with non stick cooking spray.
+Heat milk, water and butter to boiling; stir in contents of both pouches of potatoes; let stand one minute.
+Stir in corn.
+Spoon half the potato mixture in pan.
+Sprinkle half each of cheese and onions; top with remaining potatoes.
+Sprinkle with remaining cheese and onions.
+Bake 10 to 15 minutes until cheese is melted.
+Enjoy !
+Extraction:
+    def Preheat_oven_to_350_degrees_Fahrenheit():
+        h1 = Preheat(tool=oven, temp=350 degrees F)
+    def Spray_pan_with_non_stick_cooking_spray():
+        h2 = Spray(pan, how=non_stick_cooking_spray)
+    def Heat_milk,_water_and_butter_to_boiling;_stir_in_contents_of_both_pouches_of_potatoes;_let_stand_one_minute():
+        h3 = Heat(milk, water, butter, how=to_boiling)
+        h4 = Stir(h3, pouches, how=contents_of_both_pouches_of_potatoes)
+        h5 = Stand(h4, time=one_minute)
+    def Stir_in_corn():
+        h6 = Stir(h5, corn)
+    def Spoon_half_the_potato_mixture_in_pan():
+        h7 = Spoon(h6, container=pan, how=half_the_potato_mixture)
+    def Sprinkle_half_each_of_cheese_and_onions;_top_with_remaining_potatoes():
+        h8 = Sprinkle(cheese, onions, h7, how=half_each_of_cheese_and_onions)
+        h9 = Top(h8, potatoes, how=with_remaining_potatoes)
+    def Sprinkle_with_remaining_cheese_and_onions():
+        h10 = Sprinkle(cheese, onions, h9, how=with_remaining_cheese_and_onions)
+    def Bake_10_to_15_minutes_until_cheese_is_melted():
+        h11 = Bake(h1, h10, time=10-15 minutes, how=until_cheese_is_melted)
+    def Enjoy_!:
+        Out = Enjoy(h11)
+Require:
+Can you remove the potatoes from the recipe?
+Result:
+Preheat oven to 350 degrees Fahrenheit.
+Spray pan with non stick cooking spray.
+Heat milk, water and butter to boiling; stir in contents of both pouches of potatoes; let stand one minute.
+Stir in corn.
+Sprinkle half each of cheese and onions;
+Sprinkle with remaining cheese and onions.
+Bake 10 to 15 minutes until cheese is melted.
+
+Title:
+Cool 'n Easy Creamy Watermelon Pie
+Original:
+Dissolve Jello in boiling water.
+Allow to cool to room temp.
+Whisk in Cool Whip.
+Fold in watermelon.
+Spoon into crust.
+Chill for 2-3 hours or overnight.
+Yum!
+Enjoy !
+Extraction:
+    def Dissolve_Jello_in_boiling_water():
+        h1 = Dissolve(Jello, water, temp=boiling)
+    def Allow_to_cool_to_room_temp():
+        h2 = Cool(h1, temp=room_temp)
+    def Whisk_in_Cool_Whip():
+        h3 = Whisk(h2, Cool_Whip)
+    def Fold_in_watermelon():
+        h4 = Fold(h3, watermelon)
+    def Spoon_into_crust():
+        h5 = Spoon(h4, container=crust)
+    def Chill_for_2-3_hours_or_overnight():
+        h6 = Chill(h5, time=2-3_hours_or_overnight)
+    def Yum():
+        Out = Yum(h6)
+Require: 
+Can you make the food spicy?
+Result:
+Dissolve Jello in boiling water.
+Allow to cool to room temp.
+Whisk in Cool Whip.
+Fold in watermelon.
+Spoon into crust.
+Crush some chili peppers and sprinkle on top
+Chill for 2-3 hours or overnight.
+Yum!
+Enjoy !
+
+Titile: 
+Pineapple Loaf
+Original:
+Cream butter, sugar and egg.
+Add orange juice and rind and mix well.
+Sift flour, baking soda, and salt.
+Add to creamed mixture and then stir in pineapple and pecans.
+Pour into a greased 9" by 5" loaf pan.
+Let stand while oven heats to 350 degrees.
+Bake for 45 minutes.
+Extraction:
+    def Cream_butter,_sugar_and_egg():
+        h1 = Cream(butter, sugar, egg)
+    def Add_orange_juice_and_rind_and_mix_well():
+        h2 = Add(juice, rind, h1)
+        h3 = Mix(h2, how=well)
+    def Sift_flour,_baking_soda,_and_salt():
+        h4 = Sift(flour, soda, salt)
+    def Add_to_creamed_mixture_and_then_stir_in_pineapple_and_pecans():
+        h5 = Add(h4, h3)
+        h6 = Stir(h5, pineapple, pecans)
+    def Pour_into_a_greased_9"_by_5"_loaf_pan():
+        h7 = Pour(h6, container=greased_9"_loaf_pan)
+    def Let_stand_while_oven_heats_to_350_degrees():
+        h8 = Wait(h7, time=350 degrees)
+    def Bake_for_45_minutes():
+        Out= Bake(h8, time=45 minutes)
+Require: 
+Can you remove the pecans?
+Result:
+Cream butter, sugar and egg.
+Add orange juice and rind and mix well.
+Sift flour, baking soda, and salt.
+Add to creamed mixture and then stir in pineapple.
+Pour into a greased 9" by 5" loaf pan.
+Let stand while oven heats to 350 degrees.
+Bake for 45 minutes.
+
+Title:
+Brown Sugar 'Karintou' Snacks
+Original:
+In a bowl, mix flour, baking powder, sugar, then add the sesame seeds, water, and vegetable oil and knead.
+Once the dough is formed, wrap in plastic wrap and let rise for 30 minutes.
+Roll out until it is 1 cm thick.
+Then cut to 3 cm long and 1 cm wide strips.
+Use your hands roll into tubes.
+Deep fry in 160C oil for 10 to 15 minutes.
+In a pan, combine the brown sugar, sugar, soy sauce, water and heat until it starts to bubble.
+Once the large bubbles change to small bubbles, add the Step 5 karintou to coat.
+Spread out on a baking sheet to prevent sticking.
+They're done once they're dried.
+Extraction:
+    def In_a_bowl,_mix_flour,_baking_powder,_sugar,_then_add_the_sesame_seeds,_water,_and_vegetable_oil_and_knead():
+        h1 = Mix(flour, powder, sugar, container=bowl)
+        h2 = Add(h1, seeds, water, oil)
+        h3 = Knead(h2)
+    def Once_the_dough_is_formed,_wrap_in_plastic_wrap_and_let_rise_for_30_minutes():
+        h4 = Wrap(h3, wrap)
+        h5 = Rise(h4, time=30 minutes)
+    def Roll_out_until_it_is_1_cm_thick():
+        h6 = Roll(h5, how=1 cm thick)
+    def Then_cut_to_3_cm_long_and_1_cm_wide_strips():
+        h7 = Cut(h6, how=3 cm long and 1 cm wide)
+    def Use_your_hands_roll_into_tubes():
+        h8 = Roll(h7, how=into_tubes, tool=hands)
+    def Deep_fry_in_160C_oil_for_10_to_15_minutes():
+        h9 = Fry(h8, oil, temp=160C, time=10 to 15 minutes)
+    def In_a_pan,_combine_the_brown_sugar,_sugar,_soy_sauce,_water_and_heat_until_it_starts_to_bubble():
+        h10 = Mix(sugar, sauce, water, container=pan)
+        h11 = Heat(h10, how=until_it_starts_to_bubble)
+    def Once_the_large_bubbles_change_to_small_bubbles,_add_the_Step_5_karintou_to_coat():
+        h12 = Add(h11, h8, how=to_coat)
+    def Spread_out_on_a_baking_sheet_to_prevent_sticking():
+        h13 = Spread(h12, container=baking_sheet, how=to_prevent_sticking)
+    def They're_done_once_they're_dried():
+        Out = Dry(h13, how=they're_done_once_they're_dried)
+Require: 
+Can you make the food spicy?
+Result:
+In a bowl, mix flour, baking powder, sugar, then add the sesame seeds, water, crushed chili peppers, and vegetable oil and knead.
+Once the dough is formed, wrap in plastic wrap and let rise for 30 minutes.
+Roll out until it is 1 cm thick.
+Then cut to 3 cm long and 1 cm wide strips.
+Use your hands roll into tubes.
+Deep fry in 160C oil for 10 to 15 minutes.
+In a pan, combine the brown sugar, sugar, soy sauce, water and heat until it starts to bubble.
+Once the large bubbles change to small bubbles, add the Step 5 karintou to coat.
+Spread out on a baking sheet to prevent sticking.
+They're done once they're dried.
+
+Title:
+Corn Casserole
+Original:
+Fry hamburger and onion together.
+Peel and dice potatoes.
+Boil until soft.
+Mash potatoes.
+Add corn to hamburger.
+Add tomato sauce to hamburger.
+In medium pan pour hamburger mixture.
+Put mashed potatoes on top of hamburger.
+Add grated cheese.
+Bake in 350 degree (175 C.) oven until cheese melts.
+Extraction:
+    def Fry_hamburger_and_onion_together():
+        h1 = Fry(hamburger, onion, how=together)
+    def Peel_and_dice_potatoes():
+        h2 = Peel(potatoes)
+        h3 = Dice(h2)
+    def Boil_until_soft():
+        h4 = Boil(h3, how=until_soft)
+    def Mash_potatoes():
+        h5 = Mash(h4)
+    def Add_corn_to_hamburger():
+        h6 = Add(corn, h1)
+    def Add_tomato_sauce_to_hamburger():
+        h7 = Add(sauce, h6)
+    def In_medium_pan_pour_hamburger_mixture():
+        h8 = Pour(h7, container=medium_pan)
+    def Put_mashed_potatoes_on_top_of_hamburger():
+        h9 = Put(h5, h8, how=on_top_of_hamburger)
+    def Add_grated_cheese():
+        h10 = Add(cheese, h9, how=grated)
+    def Bake_in_350_degree_(175_C.)_oven_until_cheese_melts():
+        h11 = Bake(h10, temp=350 degrees (175 C.), time=until_cheese_melts)
+        Out = Serve(h11)
+Require: 
+Can you remove the tomatoes?
+Result:
+Fry hamburger and onion together.
+Peel and dice potatoes.
+Boil until soft.
+Mash potatoes.
+Add corn to hamburger.
+In medium pan pour hamburger mixture.
+Put mashed potatoes on top of hamburger.
+Add grated cheese.
+Bake in 350 degree (175 C.) oven until cheese melts.
+
+Title:
+Grandmommy's Mexicali Meatloaf
+Original:
+Combine beef, oats, tomato juice, egg, 1 tsp salt, pepper, chili powder, and onion in a large bowl.
+Do not overmix.
+Pack into a 9 inch square baking dish.
+Bake at 350 for 20 minutes, drain juices.
+Melt butter over medium heat, whisk in flour and 1 tsp salt.
+Slowly add milk while whisking.
+Bring to a boil.
+Cook one minute, add cheese.Stir in corn.
+Pour mixture over meat, top with green pepper rings.
+Bake 20 minutes.
+Let cool 10 minutes before cutting.
+Serve.
+Extraction:
+    def Combine_beef,_oats,_tomato_juice,_egg,_1_tsp_salt,_pepper,_chili_powder,_and_onion_in_a_large_bowl():
+        h1 = Combine(beef, oats, juice, egg, salt, pepper, powder, onion, container=large_bowl)
+    def Do_not_overmix():
+        h2 = Mix(h1, how=do_not_overmix)
+    def Pack_into_a_9_inch_square_baking_dish():
+        h3 = Pack(h2, container=9_inch_square_baking_dish)
+    def Bake_at_350_for_20_minutes,_drain_juices():
+        h4 = Bake(h3, temp=350, time=20 minutes)
+        h5 = Drain(h4, liquid=juices)
+    def Melt_butter_over_medium_heat,_whisk_in_flour_and_1_tsp_salt():
+        h6 = Melt(butter, temp=medium_heat)
+        h7 = Whisk(h6, flour, salt)
+    def Slowly_add_milk_while_whisking():
+        h8 = Add(milk, h7, how=slowly_while_whisking)
+    def Bring_to_a_boil():
+        h9 = Boil(h8, how=to_a_boil)
+    def Cook_one_minute,_add_cheese.Stir_in_corn():
+        h10 = Cook(h9, time=1 minute)
+        h11 = Add(cheese, h10)
+        h12 = Stir(h11, corn)
+    def Pour_mixture_over_meat,_top_with_green_pepper_rings():
+        h13 = Pour(h12, h5, how=over_meat)
+        h14 = Top(h13, pepper, how=with_green_pepper_rings)
+    def Bake_20_minutes():
+        h15 = Bake(h14, time=20 minutes)
+    def Let_cool_10_minutes_before_cutting():
+        h16 = Cool(h15, time=10 minutes)
+    def Serve():
+        Out = Serve(h16)
+Require: 
+Can you remove the peppers?
+Result:
+Combine beef, oats, tomato juice, egg, 1 tsp salt, pepper, chili powder, and onion in a large bowl.
+Do not overmix.
+Pack into a 9 inch square baking dish.
+Bake at 350 for 20 minutes, drain juices.
+Melt butter over medium heat, whisk in flour and 1 tsp salt.
+Slowly add milk while whisking.
+Bring to a boil.
+Cook one minute, add cheese.Stir in corn.
+Pour mixture over meat.
+Bake 20 minutes.
+Let cool 10 minutes before cutting.
+Serve.
+
+Title:
+Broccoli Rice Bake
+Original:
+Mix all ingredients and pour into a one quart baking dish.
+Bake at 350 for 20 minutes.
+Top with the remaining 1/2 cup cheese and continue baking for 10 minutes.
+Extraction:
+    def Mix_all_ingredients_and_pour_into_a_one_quart_baking_dish():
+        h1 = Mix(ingredients, container=one_quart_baking_dish)
+    def Bake_at_350_for_20_minutes():
+        h2 = Bake(h1, temp=350, time=20 minutes)
+    def Top_with_the_remaining_1/2_cup_cheese_and_continue_baking_for_10_minutes():
+        Out = Top(h2, cheese, time=10 minutes)
+Require: 
+Can you make the food spicy?
+Result:
+Mix all ingredients and pour into a one quart baking dish.
+Bake at 350 for 20 minutes.
+Top with the remaining 1/2 cup cheese, crushed chili peppers, and continue baking for 10 minutes.
+
+Title:
+Steak & Asparagus Wraps
+Original:
+Pour marinade over steak in resealable plastic bag.
+Seal bag; turn to evenly coat steak with dressing.
+Refrigerate at least 30 min.
+to marinate.
+Meanwhile, preheat grill to medium heat.
+Remove steak from marinade; discard bag and marinade.
+Grill steak 13 to 16 min.
+or until medium doneness (160F), turning occasionally.
+Meanwhile, steam asparagus 8 to 10 min.
+or until crisp-tender.
+Cut steak into thin strips.
+Place 1 to 2 steak strips and about 2 asparagus spears on each tortilla strip; roll up.
+Secure with frilled toothpicks or red bell pepper ties, if desired.
+Serve warm.
+Extraction:
+    def Pour_marinade_over_steak_in_resealable_plastic_bag():
+        h1 = Pour(marinade, container=plastic_bag)
+    def Seal_bag;_turn_to_evenly_coat_steak_with_dressing():
+        h2 = Seal(h1)
+        h3 = Turn(h2, how=to_evenly_coat_steak_with_dressing)
+    def Refrigerate_at_least_30_min._to_marinate():
+        h4 = Refrigerate(h3, time=30 min)
+    def Preheat_grill_to_medium_heat():
+        h5 = Preheat(tool=grill, temp=medium_heat)
+    def Remove_steak_from_marinade;_discard_bag_and_marinade():
+        h6 = Remove(h4, container=h1)
+    def Grill_steak_13_to_16_min.or_until_medium_doneness_(160F),_turning_occasionally():
+        h7 = Grill(h6, time=13-16 min, how=until_medium_doneness_(160F), turning_occasionally)
+    def Steam_asparagus_8_to_10_min.or_until_crisp-tender():
+        h8 = Steam(asparagus, time= 8-10 min, how=until_crisp-tender)
+    def Cut_steak_into_thin_strip():
+        h9 = Cut(h7, how=into_thin_strip)
+    def Place_1_to_2_steak_strips_and_about_2_asparagus_spears_on_each_tortilla_strip;_roll_up():
+        h10 = Place(h9, asparagus, container=tortilla_strip, how=roll_up)
+    def Secure_with_frilled_toothpicks_or_red_bell_pepper_ties,_if_desired():
+        h11 = Secure(h10, tool=frilled_toothpicks_or_red_bell_pepper_ties, if=desired)
+    def Serve_warm():
+        Out = Serve(h11, how=warm)
+Require: 
+Can you make the food spicy?
+Result:
+Pour marinade over steak in resealable plastic bag.
+Add some chili powder or crushed chili peppers to the marinade.
+Seal bag; turn to evenly coat steak with dressing.
+Refrigerate at least 30 min.
+to marinate.
+Meanwhile, preheat grill to medium heat.
+Remove steak from marinade; discard bag and marinade.
+Grill steak 13 to 16 min.
+or until medium doneness (160F), turning occasionally.
+Meanwhile, steam asparagus 8 to 10 min.
+or until crisp-tender.
+Cut steak into thin strips.
+Place 1 to 2 steak strips and about 2 asparagus spears on each tortilla strip; roll up.
+Secure with frilled toothpicks or red bell pepper ties, if desired.
+Serve warm.
+
+Title:
+Harrison Muesli
+Original:
+Blend 1 cup soy milk with blueberries in a blender until the mixture has the consistency of a smoothie, about 1 minute.
+Stir together the oats, coconut, and pecans in a large bowl.
+Stir in the blueberry mixture, yogurt, and the remaining soy milk.
+Cover; refrigerate for at least 4 hours or up to overnight.
+Extraction:
+    #Serve chilled.
+    def Blend_1_cup_soy_milk_with_blueberries_in_a_blender_until_the_mixture_has_the_consistency_of_a_smoothie,_about_1_minute():
+        h1 = Blend(soymilk, blueberries, container=blender, time=1 minute, how=until_the_mixture_has_the_consistency_of_a_smoothie)
+    def Stir_together_the_oats,_coconut,_and_pecans_in_a_large_bowl():
+        h2 = Stir(oats, coconut, pecans, container=large_bowl)
+    def Stir_in_the_blueberry_mixture,_yogurt,_and_the_remaining_soy_milk():
+        h3 = Stir(h1, yogurt, h2)
+    def Cover;_refrigerate_for_at_least_4_hours_or_up_to_overnight():
+        h4 = Cover(h3)
+        Outr= Refrigerate(h4, time=4 hours)
+Require: 
+Can you remove the soy milk and make the food spicy?
+Result:
+Blend blueberries in a blender until the mixture has the consistency of a smoothie, about 1 minute.
+Stir together the oats, coconut, and pecans in a large bowl.
+Stir in the blueberry mixture, yogurt.
+Crush some chili peppers and sprinkle on top
+Cover; refrigerate for at least 4 hours or up to overnight.
+
+Title:
+Erin's Mashed Potatoes
+Original:
+Peel the potatoes and quarter.
+Add all ingredients to a medium saucepan and simmer until the potatoes are tender.
+Remove potatoes from cooking liquid and mash to desired consistencey (I like mine a bit lumpy).
+Add a few spoonfuls of the cooking liquid and the sour cream and combine.
+Serve as a side with steak!
+Extraction:
+    def Peel_the_potatoes_and_quarter():
+        h1 = Peel(potatoes)
+        h2 = Cut(h1, how=quarter)
+    def Add_all_ingredients_to_a_medium_saucepan_and_simmer_until_the_potatoes_are_tender():
+        h3 = Add(h2, container=medium_saucepan)
+        h4 = Simmer(h3, how=until_the_potatoes_are_tender)
+    def Remove_potatoes_from_cooking_liquid_and_mash_to_desired_consistencey_(I_like_mine_a_bit_lumpy):
+        h5 = Remove(h4, container=cooking_liquid)
+        h6 = Mash(h5, how=desired_consistencey_(I_like_mine_a_bit_lumpy))
+    def Add_a_few_spoonfuls_of_the_cooking_liquid_and_the_sour_cream_and_combine():
+        h7 = Add(cooking_liquid, cream, container=h6)
+    def Serve_as_a_side_with_steak!:
+        Out = Serve(h7, how=as_a_side_with_steak!)
+Require: 
+Can you remove the sour cream?
+Result:
+Peel the potatoes and quarter.
+Add all ingredients to a medium saucepan and simmer until the potatoes are tender.
+Remove potatoes from cooking liquid and mash to desired consistencey (I like mine a bit lumpy).
+Add a few spoonfuls of the cooking liquid and combine.
+Serve as a side with steak!
+
+Title:
+Banana Cream Pie Smoothie
+Original:
+Place vanilla wafer cookie in a baggie, seal bag and crush it into tiny pieces (I rolled a rolling pin over it).
+Set aside.
+In a blender add banana, coconut milk, half-and-half, vanilla extract, stevia and ice cubes.
+Put the lid on and blend until smooth.
+Pour into 2 cups and top each smoothie with whipped cream and crushed wafer cookie.
+Extraction:
+    def Place_vanilla_wafer_cookie_in_a_baggie,_seal_bag_and_crush_it_into_tiny_pieces_(I_rolled_a_rolling_pin_over_it):
+        h1 = Place(cookie, container=baggie)
+        h2 = Seal(h1, how=bag)
+        h3 = Crush(h2, how=into_tiny_pieces, tool=rolling_pin)
+    def Set_aside():
+        h4 = Set(h3, how=aside)
+    def In_a_blender_add_banana,_coconut_milk,_half-and-half,_vanilla_extract,_stevia_and_ice_cubes:
+        h5 = Add (banana, coconut_milk, half-and-half, vanilla_extract, stevia, cubes, container=blender)
+    def Put_the_lid_on_and_blend_until_smooth:
+        h6 = Put(lid, container=h5)
+        h7 = Blend(h6, how=until_smooth)
+    def Pour_into_2_cups_and_top_each_smoothie_with_whipped_cream_and_crushed_wafer_cookie:
+        h8 = Pour(h7, container=2_cups)
+        Out = Top(h8, cream, h3)
+Require: 
+Can you make the food sweet?
+Result:
+Place vanilla wafer cookie in a baggie, seal bag and crush it into tiny pieces (I rolled a rolling pin over it).
+Set aside.
+In a blender add banana, coconut milk, half-and-half, vanilla extract, stevia, sugar and ice cubes.
+Put the lid on and blend until smooth.
+Pour into 2 cups and top each smoothie with whipped cream and crushed wafer cookie.
+
+Title:
+Frosty Lemon Ice Cream Sandwiches
+Original:
+LINE the bottom of a 9" (2.5L) square pan with wax paper and graham wafers, completely covering base of pan.
+BLEND ice cream and lemonade, mixing well.
+Pour over graham wafer base.
+Cover with remaining wafers.
+Freeze 1 hour or until firm.
+COMBINE melted chocolate chips and butter and spread evenly over top graham layer.
+Freeze until firm, about 2 hours.
+Cut into squares or bars with warmed sharp knife.
+Extraction:
+    def Line_the_bottom_of_a_9"_(2.5L)_square_pan_with_wax_paper_and_graham_wafers,_completely_covering_base_of_pan():
+        h1 = Line(container=pan, material=wax_paper, layer=graham_wafers)
+    def Blend_ice_cream_and_lemonade,_mixing_well():
+        h2 = Blend(ice_cream, lemonade, how=mixing_well)
+    def Pour_over_graham_wafer_base():
+        h3 = Pour(h2, container=h1)
+    def Cover_with_remaining_wafers():
+        h4 = Cover(h3, material=wafers)
+    def Freeze_1_hour_or_until_firm():
+        h5 = Freeze(h4, time=1 hour, how=or_until_firm)
+    def Combine_melted_chocolate_chips_and_butter_and_spread_evenly_over_top_graham_layer():
+        h6 = Combine(chocolate, butter)
+        h7 = Spread(h6, layer=graham_layer, how=evenly_over_top)
+    def Freeze_until_firm,_about_2_hours():
+        h8 = Freeze(h7, time=2 hours, how=until_firm)
+    def Cut_into_squares_or_bars_with_warmed_sharp_knife():
+        Out = Cut(h8, how=into_squares_or_bars_with_warmed_sharp_knife)
+Require: 
+Can you make the food sweet and sour?
+Result:
+LINE the bottom of a 9" (2.5L) square pan with wax paper and graham wafers, completely covering base of pan.
+BLEND ice cream and lemonade, mixing well.
+Pour over graham wafer base.
+Cover with remaining wafers.
+Freeze 1 hour or until firm.
+COMBINE melted chocolate chips and butter and spread evenly over top graham layer.
+Add a layer of sweet and sour sauce over the melted chocolate chips and butter
+Freeze until firm, about 2 hours.
+Cut into squares or bars with warmed sharp knife.
+
+Title:
+Quick & Easy Crab Dip
+Original:
+Dump crab meat into a large mixing bowl.
+If using lump crab meat, break up crab chunks to as small size pieces as you like.
+Add sour cream and cream cheese and stir until well blended.
+Add in the shredded cheese, bacon bits, and seasonings and stir together.
+Serve with tortilla chips, bagel chips, pita chips, or crackers.
+Extraction:
+    def Dump_crab_meat_into_a_large_mixing_bowl():
+        h1 = Dump(crab_meat, container=large_mixing_bowl)
+    def If_using_lump_crab_meat,_break_up_crab_chunks_to_as_small_size_pieces_as_you_like():
+        h2 = Break(crab_meat, how=to_as_small_size_pieces_as_you_like)
+    def Add_sour_cream_and_cream_cheese_and_stir_until_well_blended():
+        h3 = Add(sour_cream, cheese, h2)
+        h4 = Stir(h3, how=until_well_blended)
+    def Add_in_the_shredded_cheese,_bacon_bits,_and_seasonings_and_stir_together():
+        h5 = Add(cheese, bits, seasonings, h4)
+        h6 = Stir(h5, how=together)
+    def Serve_with_tortilla_chips,_bagel_chips,_pita_chips,_or_crackers():
+        Out = Serve(h6, how=with_tortilla_chips,_bagel_chips,_pita_chips,_or_crackers)
+Require: 
+Can you remove the cheese?
+Result:
+Dump crab meat into a large mixing bowl.
+If using lump crab meat, break up crab chunks to as small size pieces as you like.
+Add sour cream and cream cheese and stir until well blended.
+Add in the bacon bits and seasonings and stir together.
+Serve with tortilla chips, bagel chips, pita chips, or crackers.
+
+Title:
+Margarita Madras
+Original:
+Combine the orange juice, tequila, triple sec, and cranberry juice in a cocktail shaker filled with 3/4 cup ice.
+Shake vigorously.
+Pour into a glass.
+Garnish with an orange wedge.
+Variation-for a pink-hued rim, dip the rim of the glass in grenadine before coating with sugar.
+Extraction:
+    def Combine_the_orange_juice,_tequila,_triple_sec,_and_cranberry_juice_in_a_cocktail_shaker_filled_with_3/4_cup_ice():
+        h1 = Combine(juice, tequila, sec, juice, container=shaker, volume=3/4cup, temp=ice)
+    def Shake_vigorously():
+        h2 = Shake(h1, how=vigorously)
+    def Pour_into_a_glass():
+        h3 = Pour(h2, container=glass)
+    def Garnish_with_an_orange_wedge():
+        h4 = Garnish(h3, wedge)
+    def Variation-for_a_pink-hued_rim,_dip_the_rim_of_the_glass_in_grenadine_before_coating_with_sugar():
+        h5 = Dip(h4, container=rim, liquid=grenadine)
+        h6 = Coat(h5, sugar)
+        Out = Serve(h6)
+Require: 
+Can you make the food spicy?
+Result:
+Combine the orange juice, tequila, triple sec, and cranberry juice in a cocktail shaker filled with 3/4 cup ice.
+Shake vigorously.
+Pour into a glass.
+Garnish with an orange wedge.
+Variation-for a pink-hued rim, dip the rim of the glass in grenadine, then sprinkle chili pepper powder before coating with sugar.
+
+Title:
+Guacamole
+Original:
+Mix above ingredients together until smooth.
+Enjoy!
+Extraction:
+    def Mix_above_ingredients_together_until_smooth():
+        h1 = Mix(ingredients, how=until_smooth)
+    def Enjoy():
+        Out = Enjoy(h1)
+Require: 
+Can you make the food spicy?
+Result:
+Mix above ingredients together until smooth.
+Add chili peppers to the mix.
+Enjoy!
+
+Title:
+Penne with Smoked Trout and Sugar Snap Peas
+Original:
+Cook pasta in a large pot of 2 minutes less than package instructions indicate, then add sugar snaps and cook until sugar snaps are tender, about 2 minutes more.
+Reserve 1/4 cup cooking water, then drain pasta and sugar snaps in a colander and return to pot.
+Boil cream in a 1- to 1 1/2-quart heavy saucepan, uncovered, 2 minutes, then add to pasta along with trout, zest, reserved cooking water, dill, salt, and pepper and toss until combined.
+Extraction:
+    def Cook_pasta_in_a_large_pot_of_2_minutes_less_than_package_instructions_indicate,_then_add_sugar_snaps_and_cook_until_sugar_snaps_are_tender,_about_2_minutes_more():
+        h1 = Cook(pasta, time=2 minutes, how=less_than_package_instructions_indicate)
+        h2 = Cook(sugar_snaps, time=2 minutes, how=tender)
+    def Reserve_1/4_cup_cooking_water,_then_drain_pasta_and_sugar_snaps_in_a_colander_and_return_to_pot():
+        h3 = Reserve(cooking_water, amount=1/4 cup)
+        h4 = Drain(h2, container=colander)
+        h5 = Return(h4, container=pot)
+    def Boil_cream_in_a_1-_to_1_1/2-quart_heavy_saucepan,_uncovered,_2_minutes,_then_add_to_pasta_along_with_trout,_zest,_reserved_cooking_water,_dill,_salt,_and_pepper_and_toss_until_combined():
+        h6 = Boil(cream, container=1-_to_1_1/2-quart_heavy_saucepan, time=2 minutes)
+        h7 = Add(h6, trout, zest, h3, dill, salt, pepper, container=h5)
+        Out= Toss(h7, how=until_combined)
+Require: 
+Can you remove all the sugar?
+Result:
+Cook pasta in a large pot of 2 minutes less than package instructions indicate, then add sugar snaps and cook until sugar snaps are tender, about 2 minutes more.
+Reserve 1/4 cup cooking water, then drain pasta and sugar snaps in a colander and return to pot.
+Boil cream in a 1- to 1 1/2-quart heavy saucepan, uncovered, 2 minutes, then add to pasta along with trout, zest, reserved cooking water, dill, salt, and pepper and toss until combined.
+Remove sugar snaps.
+
+Title:
+Dried Fruit Salad with Philly* Cream
+Original:
+Bring water, juice and sugar to the boil in a saucepan.
+Simmer for 2-3 minutes until sugar has dissolved.
+Add dried fruits and cinnamon stick, simmer a further 5 minutes.
+Whisk together the Philly*, milk and honey until smooth.
+Serve fruits warm with Philly* cream and toasted almonds.
+Extraction:
+    def Bring_water,_juice_and_sugar_to_the_boil_in_a_saucepan():
+        h1 = Boil(water, juice, sugar, container=saucepan)
+    def Simmer_for_2-3_minutes_until_sugar_has_dissolved():
+        h2 = Simmer(h1, time=2-3 minutes, how=until_sugar_has_dissolved)
+    def Add_dried_fruits_and_cinnamon_stick,_simmer_a_further_5_minutes():
+        h3 = Add(fruits, stick, h2)
+        h4 = Simmer(h3, time=5 minutes)
+    def Whisk_together_the_Philly*,_milk_and_honey_until_smooth():
+        h5 = Whisk(Philly*, milk, honey, how=until_smooth)
+    def Serve_fruits_warm_with_Philly*_cream_and_toasted_almonds():
+        Out = Serve(h4, h5, how=warm_with_Philly*_cream_and_toasted_almonds
+Require: 
+Can you remove the milk?
+Result:
+Bring water, juice and sugar to the boil in a saucepan.
+Simmer for 2-3 minutes until sugar has dissolved.
+Add dried fruits and cinnamon stick, simmer a further 5 minutes.
+Whisk together the Philly*, honey until smooth.
+Serve fruits warm with Philly* cream and toasted almonds.
+
+Title:
+Cheesy Herbed Egg Sandwich
+Original:
+COOK the eggs over medium heat until fluffy, stirring frequently.
+Stir in the cream cheese, until well blended.
+SPOON the cream cheese mixture onto one muffin half.
+TOP with the egg mixture and cheese slice.
+Top with the remaining muffin half.
+Extraction:
+    def Cook_the_eggs_over_medium_heat_until_fluffy,_stirring_frequently():
+        h1 = Cook(eggs, temp=medium_heat, how=until_fluffy, stirring_frequently)
+    def Stir_in_the_cream_cheese,_until_well_blended():
+        h2 = Stir(h1, cream_cheese, how=until_well_blended)
+    def Spoon_the_cream_cheese_mixture_onto_one_muffin_half():
+        h3 = Spoon(h2, container=one_muffin_half)
+    def Top_with_the_egg_mixture_and_cheese_slice():
+        h4 = Top(h3, egg_mixture, cheese_slice)
+    def Top_with_the_remaining_muffin_half():
+        Out= Top(h4, container=remaining_muffin_half)
+Require: 
+Can you make the food spicy?
+Result:
+COOK the eggs over medium heat until fluffy, stirring frequently.
+Stir in the cream cheese, until well blended.
+SPOON the cream cheese mixture onto one muffin half.
+Add some crushed chili peppers to the egg mixture.
+TOP with the egg mixture and cheese slice.
+Top with the remaining muffin half.
+
+Title:
+Apple-Currant Bars
+Original:
+Preheat oven to 350.Combine first 6 ingredients.
+Stir well; set aside.Cream margarine in a large bowl; gradually add brown sugar, beating at medium speed of a mixer until light and fluffy.
+Add egg; beat well.
+Add flour mixture to creamed mixture; beat just until dry ingredients are moist.
+Stir in vanilla, apple, oats, and currants.Spoon batter into a 9-inch square baking pan coated with cooking spray.Bake at 350 for 40 minutes or until a wooden pick inserted in center comes out clean.
+Cool completely in pan on a wire rack.
+Sprinkle powdered sugar over top.
+Extraction:
+    def Preheat_oven_to_350._Combine_first_6_ingredients():
+        h1 = Preheat(tool=oven, temp=350)
+        h2 = Combine(ingredients, how=first_6_ingredients)
+    def Stir_well;_set_aside():
+        h3 = Stir(h2, how=well)
+    def Cream_margarine_in_a_large_bowl;_gradually_add_brown_sugar,_beating_at_medium_speed_of_a_mixer_until_light_and_fluffy():
+        h4 = Cream(margarine, container=large_bowl)
+        h5 = Add(sugar, h4, how=gradually, speed=medium)
+    def Add_egg;_beat_well():
+        h6 = Add(egg, h5, how=beat_well)
+    def Add_flour_mixture_to_creamed_mixture;_beat_just_until_dry_ingredients_are_moist():
+        h7 = Add(flour, h6, how=beat_just_until_dry_ingredients_are_moist)
+    def Stir_in_vanilla,_apple,_oats,_and_currants():
+        h8 = Stir(vanilla, apple, oats, currants, h7)
+    def Spoon_batter_into_a_9-inch_square_baking_pan_coated_with_cooking_spray():
+        h9 = Spoon(batter, container=9-inch_square_baking_pan_coated_with_cooking_spray)
+    def Bake_at_350_for_40_minutes_or_until_a_wooden_pick_inserted_in_center_comes_out_clean():
+        h10 = Bake(h9, temp=350, time=40 minutes, how=until_a_wooden_pick_inserted_in_center_comes_out_clean)
+    def Cool_completely_in_pan_on_a_wire_rack():
+        h11 = Cool(h10, how=completely_in_pan_on_a_wire_rack)
+    def Sprinkle_powdered_sugar_over_top():
+        Out = Sprinkle(h11, sugar, how=powdered_sugar_over_top)
+Require: 
+Can you make the food spicy?
+Result:
+Preheat oven to 350.Combine first 6 ingredients.
+Stir well; set aside.Cream margarine in a large bowl; gradually add brown sugar, beating at medium speed of a mixer until light and fluffy.
+Add egg; beat well.
+Add flour mixture to creamed mixture; beat just until dry ingredients are moist.
+Stir in vanilla, apple, oats, and currants.
+Add some crushed chili peppers to the mixture
+Spoon batter into a 9-inch square baking pan coated with cooking spray.Bake at 350 for 40 minutes or until a wooden pick inserted in center comes out clean.
+Cool completely in pan on a wire rack.
+Sprinkle powdered sugar over top.
+
+Title:
+Dinner In A Skillet Recipe
+Original:
+Combine first 8 ingredients.
+Shape into small meatballs.
+Roll in flour.
+Heat oil in skillet over medium heat about 3 min.
+Fry meatballs about 10 min.
+When brown arrange around sides of skillet.
+Pour condensed soup and lowfat milk, that have been mixed together, in center of skillet.
+Add in liquid removed vegetables and salt.
+Cover and simmer about 10 min.
+Extraction:
+    #Serve over hot cooked rice.
+    def Combine_first_8_ingredients():
+        h1 = Combine(ingredients, how=first_8_ingredients)
+    def Shape_into_small_meatballs():
+        h2 = Shape(h1, how=into_small_meatballs)
+    def Roll_in_flour():
+        h3 = Roll(h2, flour)
+    def Heat_oil_in_skillet_over_medium_heat_about_3_min():
+        h4 = Heat(oil, container=skillet, temp=medium_heat, time=3 min)
+    def Fry_meatballs_about_10_min():
+        h5 = Fry(h3, time=10 min)
+    def When_brown_arrange_around_sides_of_skillet():
+        h6 = Arrange(h5, container=skillet, how=around_sides)
+    def Pour_condensed_soup_and_lowfat_milk,_that_have_been_mixed_together,_in_center_of_skillet():
+        h7 = Pour(soup, milk, container=skillet, how=mixed_together, where=center)
+    def Add_in_liquid_removed_vegetables_and_salt():
+        h8 = Add(vegetables, salt, h7)
+    def Cover_and_simmer_about_10_min():
+        h9 = Cover(h8)
+        Out= Simmer(h9, time=10 min)
+Require: 
+Can you remove the meatballs?
+Result:
+Combine first 8 ingredients.
+Pour condensed soup and lowfat milk, that have been mixed together, in center of skillet.
+Add in liquid removed vegetables and salt.
+Heat oil in skillet over medium heat about 3 min.
+Cover and simmer about 10 min.
+Serve over hot cooked rice.
+Enjoy !
+
+Title:
+Whole Wheat Waffles
+Original:
+1.In a large bowl, mix together flour, salt, baking powder, cinnamon, nutmeg, ground cloves, ginger and Flax Seeds; set aside.
+Preheat waffle iron to desired temperature.
+2.In a separate bowl, beat the eggs.
+Stir in the milk, oil vanilla and honey.
+3.Mix fruit in dry mixture.
+4.Pour the milk mixture into the flour/fruit mixture; mix lightly till nicely blended.
+5.Ladle the batter into a preheated waffle iron.
+Cook the waffles until golden and crisp.
+Extraction:
+    def In_a_large_bowl,_mix_together_flour,_salt,_baking_powder,_cinnamon,_nutmeg,_ground_cloves,_ginger_and_Flax_Seeds;_set_aside():
+        h1 = Mix(flour, salt, powder, cinnamon, nutmeg, cloves, ginger, seeds, container=large_bowl)
+    def Preheat_waffle_iron_to_desired_temperature():
+        h2 = Preheat(tool=waffle_iron, temp=desired_temperature)
+    def In_a_separate_bowl,_beat_the_eggs():
+        h3 = Beat(eggs, container=separate_bowl)
+    def Stir_in_the_milk,_oil_vanilla_and_honey():
+        h4 = Stir(h3, milk, oil, vanilla, honey)
+    def Mix_fruit_in_dry_mixture():
+        h5 = Mix(h1, fruit)
+    def Pour_the_milk_mixture_into_the_flour/fruit_mixture;_mix_lightly_till_nicely_blended():
+        h6 = Pour(h4, h5, how=lightly_till_nicely_blended)
+    def Ladle_the_batter_into_a_preheated_waffle_iron():
+        h7 = Ladle(h6, container=h2)
+    def Cook_the_waffles_until_golden_and_crisp():
+        Out= Cook(h7, how=until_golden_and_crisp)
+Require: 
+Can you make the food spicy?
+Result:
+1.In a large bowl, mix together flour, salt, baking powder, cinnamon, nutmeg, ground cloves, ginger, Flax Seeds and chili pepper; set aside.
+Preheat waffle iron to desired temperature.
+2.In a separate bowl, beat the eggs.
+Stir in the milk, oil vanilla and honey.
+3.Mix fruit and chili pepper in dry mixture.
+4.Pour the milk mixture into the flour/fruit mixture; mix lightly till nicely blended.
+5.Ladle the batter into a preheated waffle iron.
+Cook the waffles until golden and crisp.
